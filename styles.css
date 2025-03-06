@@ -1,0 +1,193 @@
+/* Modern CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.app-container {
+  max-width: 800px;
+  width: 100%;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+}
+
+h1 {
+  margin-bottom: 2rem;
+  color: #333;
+  font-size: 2.5rem;
+}
+
+.container-display {
+  margin: 2rem 0;
+  position: relative;
+}
+
+.container-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  overflow: visible; /* Changed to visible to allow people to fly outside */
+}
+
+.container-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.people-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.people-image {
+  position: absolute;
+  opacity: 0;
+  z-index: 10;
+  object-fit: contain;
+  filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.3));
+  transition: opacity 0.3s ease;
+}
+
+.eject-button {
+  background-color: #ff3b30;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  box-shadow: 0 5px 15px rgba(255, 59, 48, 0.4);
+  animation: flash 1.5s infinite;
+  position: relative;
+  overflow: hidden;
+  margin-top: 1rem;
+}
+
+.eject-button:hover {
+  transform: scale(1.05);
+}
+
+.eject-button:active {
+  transform: scale(0.95);
+}
+
+.eject-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.status-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #2ecc71;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1.5rem;
+  opacity: 0;
+  z-index: 30;
+  transition: opacity 0.5s ease;
+  text-shadow: 0 0 5px rgba(46, 204, 113, 0.7);
+  box-shadow: 0 0 20px rgba(46, 204, 113, 0.5);
+  border: 2px solid #2ecc71;
+}
+
+.status-message.show {
+  opacity: 1;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(46, 204, 113, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(46, 204, 113, 0.8);
+  }
+}
+
+@keyframes flash {
+  0%,
+  100% {
+    background-color: #ff3b30;
+    box-shadow: 0 5px 15px rgba(255, 59, 48, 0.4);
+  }
+  50% {
+    background-color: #ff6b66;
+    box-shadow: 0 5px 25px rgba(255, 59, 48, 0.7);
+  }
+}
+
+@keyframes eject-people {
+  0% {
+    transform: translateY(-50%) translateX(0) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  10% {
+    transform: translateY(-50%) translateX(-10%) rotate(-5deg) scale(1.05);
+    opacity: 1;
+  }
+  30% {
+    transform: translateY(-60%) translateX(-100%) rotate(-15deg) scale(1.1);
+    opacity: 0.9;
+  }
+  60% {
+    transform: translateY(-70%) translateX(-300%) rotate(-25deg) scale(0.9);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-100%) translateX(-1000%) rotate(-45deg) scale(0.5);
+    opacity: 0;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .app-container {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .eject-button {
+    font-size: 1.2rem;
+    padding: 0.8rem 1.5rem;
+  }
+  
+  .status-message {
+    font-size: 1.2rem;
+    padding: 0.8rem 1.5rem;
+  }
+}
