@@ -1,0 +1,8 @@
+{
+  "name": "container-ejection-simulator",
+  "version": "1.0.0",
+  "description": "A fun web app that simulates ejecting people from a shipping container",
+  "scripts": {
+    "deploy": "wrangler pages deploy ."
+  }
+}
